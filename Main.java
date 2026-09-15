@@ -34,9 +34,9 @@ public class Main{
             String [] piece_infoParts=piece_info.split(",");
 
             pieceName=piece_infoParts[0].trim().toUpperCase(); //get piece name and convert it to upper case for ease
-            pieceType_name=PieceType.valueOf(pieceName); //get corresponding enum type
             color=piece_infoParts[1].trim().toUpperCase(); //get color of the piece
                 verifyInput(input);
+            pieceType_name=PieceType.valueOf(pieceName); //get corresponding enum type
 
             column=piece_infoParts[2].trim().toUpperCase().charAt(0); //get column and row, then check validity
             row=Integer.parseInt(piece_infoParts[3].trim());
@@ -85,13 +85,13 @@ public class Main{
                     System.out.println("The "+pieceName+" at"+column+","+row+" can not move to "+ targetCol+", "+targetRow);
                 }
 
-                System.out.println("Would you like to check for a different coordinate (same piece) (Y/N)?");
+                System.out.println("Would you like to check for a different coordinate (same piece)? (Y/N)");
                 String answer=input.nextLine();
                 if(answer.equalsIgnoreCase("N") || answer.equalsIgnoreCase("no")){
                     break;
                 }
             }
-            System.out.println("Would you like to check for another piece? (Y/N");
+            System.out.println("Would you like to check for another piece? (Y/N)");
             String answer=input.nextLine();
             if(answer.equalsIgnoreCase("N") || answer.equalsIgnoreCase("no")){
                 System.out.println("Thank you for playing!");
@@ -123,7 +123,7 @@ public class Main{
     //verifies if target position is possible, ask again if not
     public static void verifyPosition(Scanner input,char temp,int temp2){
         //initial/basic check if the positions given are within the board
-        boolean withinBoard= chessboard.withinChessboard(column,row);
+        boolean withinBoard= chessboard.withinChessboard(targetCol,targetRow);
         if (withinBoard){
             return;
         }
