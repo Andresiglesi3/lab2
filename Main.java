@@ -42,27 +42,6 @@ public class Main{
             row=Integer.parseInt(piece_infoParts[3].trim());
                 verifyPosition(input);
             
-            switch (pieceType_name) {
-                case PAWN:
-                    Pawn piece=new Pawn(pieceName,color,column,row);
-                break;
-                case ROOK:
-                    Rook piece=new Rook(pieceName,color,column,row);
-                break;
-                case BISHOP:
-                    Bishop piece=new Bishop(pieceName,color,column,row);
-                break;
-                case KNIGHT:
-                    Knight piece=new Knight(pieceName,color,column,row);
-                break;
-                case QUEEN:
-                    Queen piece=new Queen(pieceName,color,column,row);
-                break;
-                case KING: 
-                    King piece=new King(pieceName,color,column,row);
-                break;
-            }
-            
             boolean checkingTargetPos=true; 
             while (checkingTargetPos){
                 System.out.println("Please enter the target position for the "+pieceName+" piece");
@@ -72,11 +51,38 @@ public class Main{
                  targetRow=Integer.parseInt(indivPositions[1].trim());
                 verifyPosition(input,'a',1);
 
-                boolean isValidMove=piece.verifyTarget(targetCol,targetRow);
+            boolean isValidMove=false;
+            switch (pieceType_name) {
+                case PAWN:
+                    Pawn pawn = new Pawn(pieceName,color,column,row);
+                    isValidMove = pawn.verifyTarget(targetCol, targetRow);
+                break;
+                case ROOK:
+                    Rook rook = new Rook(pieceName,color,column,row);
+                    isValidMove = rook.verifyTarget(targetCol, targetRow);
+                break;
+                case BISHOP:
+                    Bishop bishop = new Bishop(pieceName,color,column,row);
+                    isValidMove = bishop.verifyTarget(targetCol, targetRow);
+                break;
+                case KNIGHT:
+                    Knight knight = new Knight(pieceName,color,column,row);
+                    isValidMove = knight.verifyTarget(targetCol, targetRow);        
+                break;
+                case QUEEN:
+                    Queen queen = new Queen(pieceName,color,column,row);
+                    isValidMove = queen.verifyTarget(targetCol, targetRow);
+                break;
+                case KING: 
+                    King king = new King(pieceName,color,column,row);
+                    isValidMove = king.verifyTarget(targetCol, targetRow);
+                break;
+            }
+
                 if (isValidMove){
-                    System.out.println("The "+pieceName+" at"+column+","+row+" can move to"+targetCol+","+targetRow);
+                    System.out.println("The "+pieceName+" at"+column+","+row+" can move to "+targetCol+", "+targetRow);
                 } else{
-                    System.out.println("The "+pieceName+" at"+column+","+row+" can not move to"+targetCol+","+targetRow);
+                    System.out.println("The "+pieceName+" at"+column+","+row+" can not move to "+ targetCol+", "+targetRow);
                 }
 
                 System.out.println("Would you like to check for a different coordinate (same piece) (Y/N)?");
