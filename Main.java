@@ -1,5 +1,5 @@
 /*
-Main Author: Diana S Islava
+Author(s): Andres Iglesias, Diana Islava Rauda, Pamela Herrera
 Primary controller for chess movement verifier
 Changelog:
 12/09 - Created main class, temp enum for pieces (testing), switch to get specified piece
@@ -8,14 +8,6 @@ Changelog:
  */
 import java.util.Scanner;
 public class Main{
-    enum PieceType{
-        KING,
-        QUEEN,
-        ROOK,
-        BISHOP,
-        KNIGHT,
-        PAWN
-    }
     //global variables, easy to change and use
     static Chessboard chessboard = new Chessboard();
     static String pieceName;
